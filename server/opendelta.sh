@@ -17,7 +17,7 @@ fi
 
 # ------ CONFIGURATION ------
 
-HOME=/home/build
+HOME=/home/klozz/android/marshmallow
 
 BIN_JAVA=java
 BIN_MINSIGNAPK=$HOME/delta/minsignapk.jar
@@ -78,15 +78,15 @@ if [ "$FILE_LAST" == "" ]; then
 	exit 0
 fi
 
-if [ "$FILE_LAST" == "$FILE_CURRENT" ]; then
-	echo "Abort: CURRENT and LAST zip have the same name" >&2
-	exit 1
-fi
+#if [ "$FILE_LAST" == "$FILE_CURRENT" ]; then
+#	echo "Abort: CURRENT and LAST zip have the same name" >&2
+#	exit 1
+#fi
 
 rm -rf work
 mkdir work
-rm -rf out
-mkdir out
+#rm -rf out
+#mkdir out
 
 $BIN_ZIPADJUST --decompress $PATH_CURRENT/$FILE_CURRENT work/current.zip
 $BIN_ZIPADJUST --decompress $PATH_LAST/$FILE_LAST work/last.zip
@@ -157,10 +157,10 @@ mkdir publish >/dev/null 2>/dev/null
 mkdir publish/$DEVICE >/dev/null 2>/dev/null
 cp out/* publish/$DEVICE/.
 
-rm -rf work
-rm -rf out
+#rm -rf work
+#rm -rf out
 
-rm -rf $PATH_LAST/*
+#rm -rf $PATH_LAST/*
 mkdir -p $PATH_LAST
 cp $PATH_CURRENT/$FILE_CURRENT $PATH_LAST/$FILE_CURRENT
 
